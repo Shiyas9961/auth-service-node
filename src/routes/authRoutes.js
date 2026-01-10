@@ -1,6 +1,6 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const authController = require("../controllers/authController");
+const authController = require('../controllers/authController');
 
 /**
  * @swagger
@@ -66,7 +66,7 @@ const authController = require("../controllers/authController");
  *                                  type: object
  */
 
-router.post("/login", authController.login);
-router.post("/validate", authController.validate);
+router.post('/login', authController.login);
+router.post('/validate', authController.validate);
 
 module.exports = router;

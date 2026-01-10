@@ -1,7 +1,7 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const userController = require("../controllers/userController");
-const { verifyJWT } = require("../middlewares/jwtMiddleware");
+const userController = require('../controllers/userController');
+const { verifyJWT } = require('../middlewares/jwtMiddleware');
 
 /**
  * @swagger
@@ -117,10 +117,10 @@ const { verifyJWT } = require("../middlewares/jwtMiddleware");
  *              description: User deleted successfully
  */
 
-router.post("/create", userController.createUser);
-router.get("/", verifyJWT, userController.getUsers);
-router.get("/:id", verifyJWT, userController.getUserById);
-router.put("/:id", verifyJWT, userController.updateUser);
-router.delete("/:id", verifyJWT, userController.deleteUser);
+router.post('/create', userController.createUser);
+router.get('/', verifyJWT, userController.getUsers);
+router.get('/:id', verifyJWT, userController.getUserById);
+router.put('/:id', verifyJWT, userController.updateUser);
+router.delete('/:id', verifyJWT, userController.deleteUser);
 
 module.exports = router;

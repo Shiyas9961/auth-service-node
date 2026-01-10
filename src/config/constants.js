@@ -5,9 +5,9 @@ const MONGO_COLLECTION_NAME = process.env.MONGO_COLLECTION_NAME;
 const PORT = process.env.PORT || 5000;
 
 module.exports = {
-    PORT,
-    MONGO_URI,
-    JWT_SECRET,
-    MONGO_DB_NAME,
-    MONGO_COLLECTION_NAME
-}
+  PORT,
+  MONGO_URI,
+  JWT_SECRET,
+  MONGO_DB_NAME,
+  MONGO_COLLECTION_NAME,
+};
