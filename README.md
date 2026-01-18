@@ -116,6 +116,7 @@ docker compose up ‑d
   -------- ---------------------- -----------------
   POST     `/api/auth/login`      Login & get JWT
   POST     `/api/auth/validate`   Validate token
+  POST     `/api/auth/validate-internal`   Validate token for internal service
 
 ### User APIs (Protected)
 
@@ -136,6 +137,7 @@ docker compose up ‑d
 
 ```{=html}
   Authorization: Bearer <token>
+  X-API-KEY: <x-api-key> (for internal service apis)
 ```
 
 ------------------------------------------------------------------------
