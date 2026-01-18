@@ -31,3 +31,19 @@ exports.validate = async (req, res) => {
     });
   }
 };
+
+exports.validateForInternalService = async (req, res) => {
+  try {
+    const user = await validateToken(req.body.token);
+    res.json({
+      success: true,
+      message: 'Token validated successfully for internal service',
+      user,
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
