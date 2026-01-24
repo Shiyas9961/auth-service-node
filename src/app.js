@@ -11,7 +11,20 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 
-// Swagger route
-app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+// Serve Swagger dynamically
+app.use(
+  '/api/docs',
+  (req, res, next) => {
+    // dynamically set server URL based on the current request
+    swaggerDocs.servers = [
+      {
+        url: `${req.protocol}://${req.get('host')}`,
+      },
+    ];
+    next();
+  },
+  swaggerUI.serve,
+  swaggerUI.setup(swaggerDocs)
+);
 
 module.exports = app;

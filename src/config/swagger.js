@@ -8,11 +8,7 @@ const options = {
       version: '1.0.0',
       description: 'User Authentication Service with JWT & MongoDB',
     },
-    servers: [
-      {
-        url: 'http://localhost:5000',
-      },
-    ],
+    servers: [],
     components: {
       securitySchemes: {
         bearerAuth: {
