@@ -12,22 +12,25 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 
-// Serve Swagger dynamically
-app.use(
-  '/api/docs',
-  (req, res, next) => {
-    // dynamically set server URL based on the current request
-    const prefix = req.headers['x-forwarded-prefix'] || SWAGGER_BASE_PATH || '';
-
-    swaggerDocs.servers = [
+app.get('/api/docs/swagger.json', (req, res) => {
+  const prefix = req.headers['x-forwarded-prefix'] || SWAGGER_BASE_PATH || '';
+  res.json({
+    ...swaggerDocs,
+    servers: [
       {
         url: `${req.protocol}://${req.get('host')}${prefix}`,
       },
-    ];
-    next();
-  },
+    ],
+  });
+});
+
+// Serve Swagger dynamically
+app.use(
+  '/api/docs',
   swaggerUI.serve,
-  swaggerUI.setup(swaggerDocs)
+  swaggerUI.setup(null, {
+    swaggerUrl: '/api/docs/swagger.json',
+  })
 );
 
 module.exports = app;
