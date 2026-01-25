@@ -4,6 +4,7 @@ const swaggerUI = require('swagger-ui-express');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const swaggerDocs = require('./config/swagger');
+const { SWAGGER_BASE_PATH } = require('./config/constants');
 
 const app = express();
 app.use(express.json());
@@ -16,9 +17,11 @@ app.use(
   '/api/docs',
   (req, res, next) => {
     // dynamically set server URL based on the current request
+    const prefix = req.headers['x-forwarded-prefix'] || SWAGGER_BASE_PATH || '';
+
     swaggerDocs.servers = [
       {
-        url: `${req.protocol}://${req.get('host')}`,
+        url: `${req.protocol}://${req.get('host')}${prefix}`,
       },
     ];
     next();

@@ -5,6 +5,7 @@ const MONGO_COLLECTION_NAME = process.env.MONGO_COLLECTION_NAME;
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const X_API_KEY = process.env.X_API_KEY;
+const SWAGGER_BASE_PATH = process.env.SWAGGER_BASE_PATH;
 
 module.exports = {
   PORT,
@@ -14,4 +15,5 @@ module.exports = {
   MONGO_COLLECTION_NAME,
   NODE_ENV,
   X_API_KEY,
+  SWAGGER_BASE_PATH,
 };
